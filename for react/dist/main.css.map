@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","mappings":";;;AAAA;EACI;EACA;AACJ,C","sources":["webpack://test-express-router/./src/styles/app.scss"],"sourcesContent":["body {\n    background-color: peachpuff;\n    color:red;\n}"],"names":[],"sourceRoot":""}
