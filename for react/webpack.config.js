@@ -6,12 +6,16 @@ module.exports = {
     // target: "node",
 
     output : {
-        publicPath: '/'
+        // you need to add public path for router to work
+        // if you put / imported images won't appear
+        publicPath: '',
+        assetModuleFilename: 'images/[hash][ext][query]'
     },
 
     devServer: {
         static: './dist',
         hot: true,
+        // you need to add historyApiFallback for router to work
         historyApiFallback: true
     },
 
@@ -28,25 +32,24 @@ module.exports = {
     module:{
         rules: [
             {
+                test: /\.(png|jpg|jpeg|gif|svg)$/i,
+                type: "asset"
+            },
+            {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader'
+                    loader: 'babel-loader',
                 }
             },
             {
-                test: /\.css$/i,
+                test: /\.(c|s[ac])ss$/i,
                 exclude: /node_modules/, 
                 use : [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader'
-                ]
-            },
-            {
-                test: /\.scss$/i, 
-                exclude: /node_modules/, 
-                use : [
-                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {publicPath:""}
+                    },
                     'css-loader',
                     'sass-loader'
                 ]
