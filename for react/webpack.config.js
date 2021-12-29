@@ -5,10 +5,16 @@ module.exports = {
     // devtool : "source-map",
     // target: "node",
 
+    output : {
+        publicPath: '/'
+    },
+
     devServer: {
         static: './dist',
         hot: true,
+        historyApiFallback: true
     },
+
     plugins: [
         new MiniCssExtractPlugin()
     ],
