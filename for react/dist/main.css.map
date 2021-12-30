@@ -1,1 +1,0 @@
-{"version":3,"file":"main.css","mappings":"AAAA,KACI,YACA,sB","sources":["webpack://test-express-router/./src/styles/app.scss"],"sourcesContent":["body {\n    color:brown;\n    background-size: cover;\n    // background-color: #ccc;\n}"],"names":[],"sourceRoot":""}

@@ -1,4 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const path = require('path')
 
 module.exports = {
     mode: "development",
@@ -8,19 +11,24 @@ module.exports = {
     output : {
         // you need to add public path for router to work
         // if you put / imported images won't appear
+        path: path.resolve(__dirname, 'dist') , 
         publicPath: '',
         assetModuleFilename: 'images/[hash][ext][query]'
     },
 
     devServer: {
-        static: './dist',
+        static: path.resolve(__dirname, 'dist'),
         hot: true,
         // you need to add historyApiFallback for router to work
         historyApiFallback: true
     },
 
     plugins: [
-        new MiniCssExtractPlugin()
+        new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin(),
+        new HtmlWebpackPlugin({
+            template:'./public/index.html'
+        }),
     ],
 
     resolve: {
