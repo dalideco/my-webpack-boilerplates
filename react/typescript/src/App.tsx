@@ -1,8 +1,6 @@
-import React , {useEffect, useState} from 'react'
+import React from 'react'
 import './styles/app.scss'
-import { Routes, Route, NavLink, Link } from 'react-router-dom'
-import img from './images/background.jpg'
-import controllerImg from './images/controller.svg'
+import { Routes, Route, Link } from 'react-router-dom'
 
 
 import Home from './routes/Home'
@@ -10,7 +8,6 @@ import About from './routes/About'
 
 
 export default function App() {
-    const [number, setNumber] = useState<number>(0)
     return (
         <div>
 
