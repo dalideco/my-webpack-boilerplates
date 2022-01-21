@@ -11,14 +11,20 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static('dist'))
 
+app.get('/hello',(req,res)=>{
+    res.send('hello world')
+})
+
 app.get('*',(req, res)=>{
     const {url} = req;
     const context = {};
-    const content = renderToString(
-        <Router location={url} context={context}>
-            <App/>
-        </Router>
-    )
+    const content = `<div id="root">${
+        renderToString(
+            <Router location={url} context={context}>
+                <App/>
+            </Router>
+        )
+    }</div>`
 
     fs.readFile(path.resolve('./public/index.html'),'utf-8',(err,data)=>{
         if(err) res.status(500).send(err);
@@ -27,6 +33,8 @@ app.get('*',(req, res)=>{
     })
 
 })
+
+
 
 app.listen(PORT,()=>{
     console.log(`listeningo on port ${PORT}`)
