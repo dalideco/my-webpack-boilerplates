@@ -5,15 +5,15 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 import App from '../client/App'
 import { StaticRouter as Router } from "react-router-dom/server";
+import otherRouter from './routes/api'
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static('dist'))
 
-app.get('/hello',(req,res)=>{
-    res.send('hello world')
-})
+app.use('/other', otherRouter)
 
 app.get('*',(req, res)=>{
     const {url} = req;
