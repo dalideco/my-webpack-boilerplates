@@ -11,6 +11,7 @@ import About from './routes/About'
 
 export default function App() {
     const [number, setNumber] = useState(0)
+
     return (
         <div>
             <h1>hello from react. here's an image</h1>
